@@ -1,0 +1,16 @@
+﻿@page "{id}"
+@model _0805Sample.Pages.Products.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="container-fluid">
+    <col-md-6>Name</col-md-6><col-md-6>Product Number</col-md-6>
+</div>
+
+<strong>@Model.List.Name</strong>
+<strong>@Model.List.ProductNumber</strong>
+<strong>@Model.List.SellStartDate</strong>
+<br />
+

@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Oggi è il @Model.CurrentDate</h1>
+<div>
+    <div class="col-md-6">Id</div><div class="col-md-6">Name</div>
+</div>
+<ul>
+    @foreach (var p in Model.List)
+    {
+    <li>
+        <strong>@p.Id</strong>
+        @p.Name
+
+        <a asp-page="/Products/Details"
+           asp-route-id="@p.Id"
+           asp-area=""
+           class="btn btn-primary">vai al dettaglio</a>
+        <br />
+    </li>
+    }
+</ul>

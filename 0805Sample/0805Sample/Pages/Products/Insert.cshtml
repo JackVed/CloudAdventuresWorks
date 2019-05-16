@@ -1,0 +1,67 @@
+﻿@page
+@model _0805Sample.Pages.Products.InsertModel
+@{
+    ViewData["Title"] = "Insert";
+}
+
+<h1>Insert</h1>
+
+<form method="post">
+    @*asp utilizza jquery per gestire gli attributi di validazione*@
+
+    <label asp-for="Input.Name">Name</label>
+    <input asp-for="Input.Name" />
+    <span asp-validation-for="Input.Name" class="text-danger"></span>
+    <br />
+    <label asp-for="Input.ProductNumber">ProductNumber</label>
+    <input asp-for="Input.ProductNumber" />
+    <span asp-validation-for="Input.ProductNumber" class="text-danger"></span>
+    <br />
+    <label asp-for="Input.StandardCost">StandardCost</label>
+    <input asp-for="Input.StandardCost" />
+    <span asp-validation-for="Input.StandardCost" class="text-danger"></span>
+    <br />
+    <label asp-for="Input.ListPrice">ListPrice</label>
+    <input asp-for="Input.ListPrice" />
+    <span asp-validation-for="Input.ListPrice" class="text-danger"></span>
+    <br />
+    <label asp-for="Input.SellStartDate">SellStartDate</label>
+    <input asp-for="Input.SellStartDate" />
+    <span asp-validation-for="Input.SellStartDate" class="text-danger"></span>
+    <br />
+    <button type="submit">Salva</button>
+
+    <div asp-validation-summary="All"></div>
+    @*All mostra tutti gli errori all'inserimento*@
+
+</form>
+
+<button type="button" id="btnShow">Show Message</button>
+
+<hr />
+
+<form method="post" asp-page="Insert" asp-page-handler="Subscribe">
+<h2>Iscriviti alla newsletter</h2>
+
+    <input type="email" name="mail" />
+
+    <button type="submit">Registrati</button>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />@*Validation Summary: qua vengono mostrati gli errori all'inserimento*@
+
+    <script>
+        $(#btnShow).on("click", function ()){
+            $.ajax({
+                url: "@Url.Page("Insert", "GetMessage")",
+                method: "POST",
+                dataType: "json"
+            }).then(function (data) {
+                alert(data.Message);
+            }, function () {
+                alert("errore");
+            });
+        }
+    </script>
+}

@@ -21,6 +21,8 @@ namespace _0805Sample.Models
             this.Name = Name;
         }
 
+        public Product(){}
+
         public Product(string Name, string ProductNumber, int StandardCost, float ListPrice, DateTime SellStartDate)
         {
             this.Name = Name;

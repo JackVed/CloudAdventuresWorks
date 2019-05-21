@@ -62,7 +62,7 @@ namespace _0805Sample.Pages.Products
             Input = new ProductInsertInput();
         }
 
-        public IActionResult OnPost(ProductInsertInput productInput)
+        public IActionResult OnPost()
         {
             if(Input.Name == "123")//questa è una validazione lato server
             {
